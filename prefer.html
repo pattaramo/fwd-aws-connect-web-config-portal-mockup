@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Configure Portal Redirect</title>
+  <script type="text/javascript">
+    const urlParams = new URLSearchParams(window.location.search);
+    sessionStorage.setItem("jwt", urlParams.get('jwt'));
+
+    window.onload = function () {
+      window.location = '/playback-portal-s3/search/index.html';
+    };
+  </script>
+</head>
+
+<body>
+  <div id="main-error">
+    You will be forwarding automatically. If you are not forwarded, click <a href="/playback-portal-s3/search/index.html">
+      here</a>.
+  </div>
+  <noscript>
+    Your web browser must have JavaScript enabled in order for this application to display correctly.
+  </noscript>
+
+</body>
+
+</html>

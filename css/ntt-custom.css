@@ -1,0 +1,904 @@
+.main-logo {
+  width: 85px;
+  height: 30px;
+  background-image: url('../image/logo-ntt.svg');
+};
+.nav-userId {
+  margin-right: 10px;
+  margin-top: 5px;
+};
+
+.datepicker-box {
+  float: left;
+  display: block;
+};
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/* Add some margins for each label */
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+/* Style the input fields */
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.custom-datatable {
+  font-size: 12px;
+}
+
+.grab {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.custom-botron{
+  padding-top: 1rem !important;
+  padding-right: 2rem;
+  padding-bottom: 1rem !important;
+  padding-left: 2rem;   
+}
+
+.custom-topbar-header{
+  padding-top: 5px;
+}
+
+.custom-result-table{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.row-custom{
+  margin-top: 1em;
+  margin-bottom: 1rem;
+  margin-left: 1rem; 
+  margin-right: 1rem;
+}
+
+.row{
+  margin-top: 0.7em;
+  margin-bottom: 0.7rem;
+  padding-left: 0em;
+  padding-right: 0em;
+}
+
+.row_box{
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;  
+}
+
+.box_scrolling{
+  height: 120px;
+  overflow: auto;
+  background-color: #fff;
+  width: inherit;
+  border: solid;
+  border-width: thin;
+}
+
+.p_dateList{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 14px;
+}
+
+.jumbotron {
+  background-color: #fff !important;
+}
+
+#div_holidayList {
+  border-radius: 5px !important;
+  border: inset !important;
+}
+
+.container-custom {
+  max-width: 920px;
+}
+
+.custom-label-uuid {  
+  padding-top: 0.6em;
+  padding-left: 18em;
+}
+
+.custom-modal{
+  min-width: 780px;
+}
+
+.custom-checkBox{
+  width: 105px;
+}
+
+.custom-checkBox-label{
+  padding-top: 0.2em;
+  padding-left: 0.3em !important;
+}
+
+.custom-holiday-vertical-view{
+  background-color: initial;
+  border: initial;
+}
+
+.paginate_button {
+  padding-right: 0.4em;
+}
+
+label .tooltip-info {
+  float: initial;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+  margin: 0;
+  z-index: 0px;
+  display: block;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0rem 0rem 0rem 8rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+li {
+  float: left;
+}
+.textal {
+display: flex;
+justify-content: flex-end;
+padding: 0rem 5rem 0rem 0rem;
+}
+.font1 {
+font-size: 23px;
+font-family: Arial, Helvetica, sans-serif;
+}
+.imgprofile{
+padding: 0px 0px 0px 0px ;
+width: 28px;
+height: 28px;
+display: flex;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding:25px 20px 20px 20px;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------------------------------*/
+
+
+
+
+.paddingSearch {
+  
+  padding: 5rem 0rem 2rem 0rem;
+  display: flex;
+  background: #c7ccd1;
+  justify-content: center;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boxPad {
+  padding: 3rem 6rem 3rem 6rem;
+}
+
+.boxSearch {
+  display: flex;
+  padding: 0rem 0rem 1rem 0rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.boxID {
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.Searchsize{
+  padding: 0px 0px 0px 15px ;
+  width: 234px;
+  height: 45px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  border: none;
+  border-radius: 0.3rem;
+}
+ .taxtshowSearch{
+  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+ }
+
+ .taxtshowSearchEng{
+  font-family: 'Kanit', sans-serif;
+  font-size: 15px;
+  color: #7A7878;
+ }
+
+ .rowText{
+  display: flex;
+  flex-direction: column;
+ }
+
+ .dropSize{
+  padding: 0px 0px 0px 15px ;
+  width: 1195px;
+  height: 45px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  border: none;
+  border-radius: 0.3rem;
+ }
+
+ .boxDrop {
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.positionSearchButton{
+  display: flex;
+  justify-content: center;
+}
+
+.serchButton {
+  width: 225px;
+  height: 45px;
+  background: #0072bc;
+  color: aliceblue;
+  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.serchButton:hover {
+  width: 225px;
+  height: 45px;
+  background: #fff;
+  color: #0072bc;
+  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.searchImg {
+  padding: 0px 0px 0px 10px;
+}
+
+.serchGroup {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.voicePad {
+  padding: 0rem 0rem 3rem 0rem;
+  display: flex;
+  background: #F5F5F5;
+  justify-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.positionPad {
+  padding: 0rem 6rem 1rem 9rem;
+}
+
+audio {
+  width: 38rem;
+  height: 3rem;
+}
+
+.textvoice {
+font-family: 'Kanit', sans-serif;
+  margin-top: 1rem;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.positionTextVoice {
+padding: 0rem 6rem 0rem 0rem;
+}
+
+.downloadButton {
+border-radius: 100%;
+border: none;
+height: 4rem;
+width: 4rem;
+background-color: #E87722;;
+display: flex;
+flex-direction: column;
+align-items: center;
+  justify-content: center;
+
+}
+
+
+
+.deleteImg {
+display: flex;
+}
+
+.deleteButton {
+  border: none;
+}
+
+.deleteButton:hover {
+  border: none;
+  color: var(--navbar-default-link-hover-color);
+}
+
+.groupAction {
+display: flex;
+
+}
+
+.backgroundHistory {
+  display: flex;
+  padding: 4rem 7rem 5rem 7rem;
+  background-color: #c7ccd1;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.strokeTable {
+border: none;
+}
+
+.sizeTableHisUser {
+  padding: 1rem 8rem 1rem 12rem;
+  font-size: 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableHisAct{
+  padding: 1rem 8rem 1rem 7rem;
+  font-size: 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableHisStart{
+  padding: 1rem 10rem 1rem 9rem;
+  font-size: 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableHisEnd{
+  padding: 1rem 10rem 1rem 10rem;
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableHisResource{
+  padding: 1rem 13rem 1rem 8rem;
+  font-size: 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.dropSizeHistoryAction {
+  padding: 0px 0px 0px 15px ;
+  width: 250px;
+  height: 45px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.sizeTableAction {
+  display: table-cell;
+  padding: 1rem 2rem 1rem 2rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableQ {
+  display: table-cell;
+  padding: 1rem 2rem 1rem 5rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableQas {
+    display: table-cell;
+    padding: 1rem 5rem 1rem 5rem;
+    font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableEnd {
+  display: table-cell;
+  padding: 1rem 6rem 1rem 8rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableStart {
+  display: table-cell;
+  padding: 1rem 6rem 1rem 7rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTablePhone {
+  display: table-cell;
+  padding: 1rem 3rem 1rem 4rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableUser {
+  display: table-cell;
+  padding: 1rem 5rem 1rem 5rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableID {
+  display: table-cell;
+  padding: 1rem 4rem 1rem 6rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizeTableVoice {
+  display: table-cell;
+  padding: 1rem 18rem 1rem 18rem;
+  font-family: 'Kanit', sans-serif;
+}
+
+.sizePadT {
+  display: grid;
+}
+
+.dataPositionID {
+    padding: 1rem 1rem 1rem 1rem;
+    text-align: -webkit-center;
+    font-size: 18px;
+    font-family: 'Kanit', sans-serif;
+    width: 13rem;
+}
+  
+.dataPositionHistory {
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: -webkit-center;
+  font-size: 18px;
+  font-family: 'Kanit', sans-serif;
+  }
+
+
+.dataPositionUser {
+padding: 1rem 1rem 1rem 1rem;
+text-align: -webkit-center;
+font-size: 18px;
+font-family: 'Kanit', sans-serif;
+}
+
+
+.dataPositionAction {
+padding: 1rem 1rem 1rem 1rem;
+text-align: -webkit-center;
+font-size: 18px;
+font-family: 'Kanit', sans-serif;
+width: 16rem;
+
+}
+
+.dataPositionTimestamp {
+padding: 1rem 1rem 1rem 1rem;
+text-align: -webkit-center;
+font-size: 18px;
+font-family: 'Kanit', sans-serif;
+width: 18rem;
+
+}
+
+.dataPositionResource {
+padding: 1rem 1rem 1rem 1rem;
+text-align: -webkit-center;
+font-size: 18px;
+font-family: 'Kanit', sans-serif;
+width: 16rem;
+
+}
+
+.scroller {
+width: auto;
+height: 67.7rem;
+overflow-y: scroll;
+scrollbar-color: rebeccapurple green;
+scrollbar-width: thin;
+}
+
+.scroller2 {
+overflow-y: scroll;
+height: 48rem;
+}
+
+.fullta{
+display: flex;
+}
+
+.backgroundProfile {
+display: flex;
+padding: 4rem 7rem 2rem 7rem;
+background-color: #c7ccd1;
+flex-direction: column;
+align-items: center
+}
+
+.paddingProfile {
+ 
+  display: flex;
+  background: #FFF;
+  justify-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+}
+
+.profiletext1 {
+  padding: 0rem 77rem 0rem 0rem;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Kanit', sans-serif;
+  color: #25484C;
+  flex-direction: column;
+}
+
+.backgroundProfile1 {
+  display: flex;
+  padding: 0rem 7rem 2rem 7rem;
+  background-color: #c7ccd1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profilePhoto {
+padding: 0rem 3rem 0rem 0rem;
+display: flex;
+justify-content: center;
+}
+
+.profilefont{
+  display: flex;
+  margin-right: auto;
+
+}
+
+.centersubmit{
+  display: flex;
+  justify-content: center;
+}
+
+.pandingbuttonsearch{
+  padding: 0rem 1rem 0rem 0rem;
+}
+
+.profiletext {
+
+display: flex;
+justify-content: center;
+font-size: 30px;
+font-family: 'Kanit', sans-serif;
+color: #25484C;
+flex-direction: column;
+}
+
+.editprofile {
+padding: 0rem 3rem 0rem 0rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.role {
+font-size: 20px;
+font-family: 'Kanit', sans-serif;
+color: #25484C; 
+}
+
+.boxlist {
+padding: 0.5rem 0.5rem 0.5rem 0rem;
+}
+
+.tableas{
+  padding: 0.5rem 0.5rem 0.5rem 0rem;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td{
+  padding: 15px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+tr:nth-child(even){
+  background-color: #bad2ed;
+}
+th{
+  background-color: #455565; 
+  color: #ffffff;     
+
+font-family: 'Kanit', sans-serif;
+   
+}
+
+.endAl{
+  text-align: end;
+
+font-family: 'Kanit', sans-serif;
+color: #ffffff; 
+}
+
+.endAl1{
+  text-align: end;
+
+font-family: 'Kanit', sans-serif;
+color: #455565; 
+direction: rtl;
+}
+
+
+.padlist {
+  padding: 1rem 10rem 1rem 10rem;
+  display: flex;
+  background: #FFF;
+  justify-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+}
+.padlist1 {
+  padding: 3rem 10rem 3rem 10rem;
+  display: flex;
+  background: #FFF;
+  justify-content: center;
+  border-radius: 0.5rem;
+  align-items: center;
+}
+
+.listtext {
+padding: 0rem 37rem 0rem 0rem;
+display: flex;
+justify-content: center;
+font-size: 20px;
+font-family: 'Kanit', sans-serif;
+color: #25484C;
+flex-direction: column;
+}
+
+.rolelist {
+padding: 0rem 37rem 0rem 0rem;
+display: flex;
+font-size: 20px;
+font-family: 'Kanit', sans-serif;
+color: #25484C;
+flex-direction: row;
+align-content: center;
+align-items: center
+}
+
+.editprofile1 {
+  padding: 0rem 4.5rem 0rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+font-family: 'Kanit', sans-serif;
+color: #25484C;
+flex-direction: row;
+align-content: center;
+align-items: center
+  }
+
+
+.scroller3 {
+overflow-y: scroll;
+height: 63rem;
+}
+
+.boxscroll {
+padding: 2rem 0rem 0rem 0rem;
+}
+
+.boxadd {
+padding: 1rem 0rem 0rem 0rem;
+display: flex;
+justify-content: center;
+}
+
+.addbutton {
+border-radius: 100%;
+border: none;
+padding: 0px 0px 0px 0px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.texxx{
+  display: flex;
+}
+
+.tezs{
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-check-label{
+  margin: 0.5rem 0rem 0rem 1rem;
+}
+
+.addbutton:hover {
+  border-radius: 100%;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #0fc8f2;
+  }
+
+.form-check{
+  display: flex;
+  padding: 0rem 0rem 1rem 2rem;
+}
+
+.actionprofilebutton {
+border-radius: 100%;
+border: none;
+padding: 0px 0px 0px 0px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.actionprofilebutton1 {
+  border-radius: 100%;
+  border: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+.actionprofilebutton:hover {
+  border-radius: 100%;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #0fc8f2;
+  }
+
+  .actionprofilebutton1:hover {
+    border-radius: 100%;
+    border: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #0fc8f2;
+    }
+
+.colR {
+  display: flex;
+  background-color: #c7ccd1;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.password-container{
+  width: 400px;
+  position: relative;
+}
+.password-container input[type="password"],
+.password-container input[type="text"]{
+  width: 100%;
+  padding: 12px 36px 12px 12px;
+  box-sizing: border-box;
+}
+.fa-eye{
+  position: absolute;
+  top: 28%;
+  right: 4%;
+  cursor: pointer;
+  color: lightgray;
+}
+
+.centerBoxtext{
+  text-align: center;
+}
+
+.Menuprofile{
+  padding: 65rem 0rem 0rem 0rem;
+}
+
+.paddingpage{
+  padding: 2rem 2rem 2rem 2rem;
+
+}
+
+.paddingpagein{
+  padding: 1rem 2rem 1rem 2rem;
+  
+}
+
+
+
+.Inpaddingpage{
+  background-color: #455565;
+  border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.colR1 {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.colR2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.colR3{
+  display: flex;
+  background-color: aliceblue;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.coverT {
+  padding: 0rem 0rem 0rem 0rem;
+}
+
+label{margin-left: 20px;}
+#datepicker{width:180px; margin: 0 20px 20px 20px;}
+#datepicker > span:hover{cursor: pointer;}
+
+
+

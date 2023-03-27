@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="desktop-menu-open" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Contact Center Dialer Configuration Portal</title>
+  <!-- meta description -->
+  <link rel="stylesheet" href="../css/common/fonts_googleapi.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.app-dynamic.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datetime-picker.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datatables.min.css">
+  <link rel="stylesheet" href="../css/common/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/common/flatpickr.min.css">
+  <link rel="stylesheet" href="../css/ntt-custom.css">
+
+  <!-- your own stylesheet here -->
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <div id="app">
+    <div class="desktop-menu-layout">
+      <div class="desktop-menu">
+        <div class="accordion-menu">
+          <nav class="scrollbars scrollbars-light">
+            <ul class="nav" data-accordion-group>
+              <li><a href="../search/index.html">Voice Recording</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../history/index.html">History</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../View_role/index.html">User Role</a></li>
+              <li><a href="../profile/index.html">Profile</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+
+      <header class="site-header">
+        <nav class="navbar navbar-fixed-top">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="desktop-menu-toggle hidden-mobile">
+              <a href="#" data-toggle="desktop-menu" title="Desktop menu">
+                <div class="hidden-closed">Hide</div>
+                <div class="hidden-opened"></div>
+              </a>
+            </li>
+            <li>
+              <div style="padding-top: 10px">
+                <span>Contact Center<br>FWD Playback Portal</span>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="../profile/index.html" style="font-size: 1.2em;"><span
+                  class="fa fa-user">{{nav.displayName}}</span></a>
+            </li>
+            <li role="separator" class="divider hidden-mobile"></li>
+            <li>
+              <button type="button" class="btn navbar-btn btn-primary" v-on:click="signout()" style="width: 8rem;">Sign
+                out</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="paddingpage">
+          <div class="Inpaddingpage">
+            <div class="paddingpagein">
+              <span class="fas fa-home"></span> HOME <span class="fas fa-chevron-right"></span> Voice Recording
+            </div>
+          </div>
+        </div>
+
+        <form id="campaignForm" autocomplete="off" @submit.prevent="formSubmit()">
+          <div class="row row_box">
+            <div class="row justify-content-start"
+              style=" width:-webkit-fill-available ; display: flex; flex-direction: row; align-items: flex-end;">
+
+              <div class='col-md-6'>
+                <div class="has-icon">
+                  <label class="control-label" for="datePicker-start"><strong>Start Date</strong></label>
+                  <input type="text" id="datePicker-start" class="form-control" placeholder="Please select start date"
+                    data-alt-format="j M Y" v-on:change=onStartDateChange() required>
+                  <span class="form-control-feedback fa-calendar"></span>
+                </div>
+              </div>
+
+              <div class='col-md-6'>
+                <div class="has-icon">
+                  <label class="control-label" for="datePicker-end"><strong>End Date</strong></label>
+                  <input type="text" id="datePicker-end" class="form-control" placeholder="Please select end date"
+                    data-alt-format="j M Y" v-on:change=onEndDateChange() required>
+                  <span class="form-control-feedback fa-calendar"></span>
+                </div>
+              </div>
+
+
+              <div class='col-md-2'>
+
+                <button type="submit" class="btn btn-primary"
+                  style="float: right; border-top: 1em; width:-webkit-fill-available; display:flex; justify-content:center;"
+                  id="btn-submit">
+                  <div class="pandingbuttonsearch"><span class="fas fa-search" style="font-size: 1em;"></span></div>
+                  Search
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+        <div class="paddingpage">
+          <table id="result-datatable" class="table-striped dataTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>PhoneNumber</th>
+                <th>StartTime</th>
+                <th>EndTime</th>
+                <th>Queue</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in results">
+                <td>{{row.id}}</td>
+                <td>{{row.fromphonenumber}}</td>
+                <td>{{row.callstartdatetime}}</td>
+                <td>{{row.callenddatetime}}</td>
+                <td>{{row.queuename}}</td>
+                <td class="endAl1">
+
+                  <div class="texxx">
+                    <div class="tezs">
+                      <button v-if="user_role !== 'agent' && user_role !== 'supervisor'" type="button" class="actionprofilebutton1" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                        <i class="fas fa-trash" style="font-size: 1em;"></i>
+                      </button>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form @submit.prevent="remove_voiceDetail(row.id)">
+                                <label for="confirmation">To confirm deletion, type "permanently delete" in the text
+                                  input field.</label>
+                                <input type="text" id="confirmation" name="confirmation" v-model="confirmation">
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                  <button type="submit" class="btn btn-primary"
+                                    :disabled="confirmation !== 'permanently delete'">CONFIRM</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="tezs">
+                      <button class="actionprofilebutton1" onclick="goToSalesforce(id)"><img
+                          src="../image/salesforce-logo.png" alt="" width="40rem" height="20rem"
+                          style="margin-bottom: 0px;"></button>
+                    </div>
+                    <div class="tezs">
+                      <button type="button" v-on:click="showAudio(row.id)" class="actionprofilebutton1">
+                        <div><span class="fas fa-play" style="font-size: 1em;"></span></div>
+                      </button>
+                      <audio id="myAudio" v-if="user_role == 'admin' || user_role == 'supervisor'" src="" controls loop
+                        autoplay></audio>
+
+                      <audio id="myAudio" v-if="user_role == 'agent'" src="" controls loop autoplay
+                        controlsList="nodownload"></audio>
+                    </div>
+                  </div>
+                </td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+
+  </div>
+
+  <script src="../script/common/jquery-3.3.1.min.js"></script>
+  <script src="../script/common/ntt.basecoat.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datatables.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datetime-picker.min.js"></script>
+  <script src="../script/common/jquery.dataTables.js"></script>
+  <script src="../script/common/fontawesome5.15.1.all.min.js"></script>
+  <script src="../script/common/vue-2.6.12.js"></script>
+  <script src="../script/common/vue.router-3.4.3.js"></script>
+  <script src="../script/common/axios-0.19.2.js"></script>
+  <script src="../script/common/moment-with-locales.js"></script>
+  <script src="../script/common/flatpickr.js"></script>
+
+  <!-- your own script here -->
+
+  <script src="./search.js"></script>
+
+</body>
+
+</html>

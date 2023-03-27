@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="desktop-menu-open" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Contact Center Dialer Configuration Portal</title>
+  <!-- meta description -->
+  <link rel="stylesheet" href="../css/common/fonts_googleapi.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.app-dynamic.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datetime-picker.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datatables.min.css">
+  <link rel="stylesheet" href="../css/common/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/common/flatpickr.min.css">
+  <link rel="stylesheet" href="../css/ntt-custom.css">
+
+  <!-- your own stylesheet here -->
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <div id="app">
+    <div class="desktop-menu-layout">
+      <div class="desktop-menu">
+        <div class="accordion-menu">
+          <nav class="scrollbars scrollbars-light">
+            <ul class="nav" data-accordion-group>
+              <li><a href="../search/index.html">Voice Recording</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../history/index.html">History</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../View_role/index.html">User Role</a></li>
+              <li><a href="../profile/index.html">Profile</a></li>
+            </ul>
+
+          </nav>
+        </div>
+      </div>
+
+
+      <header class="site-header">
+        <nav class="navbar navbar-fixed-top">
+          <!-- IMPORTANT: add the class `navbar-fixed-top` to position it at the top of the window -->
+
+          <!-- Left utility nav -->
+          <ul class="nav navbar-nav navbar-left">
+            <!-- Desktop menu toggle -->
+            <li class="desktop-menu-toggle hidden-mobile">
+              <a href="#" data-toggle="desktop-menu" title="Desktop menu">
+                <div class="hidden-closed">Hide</div>
+                <div class="hidden-opened"></div>
+              </a>
+            </li>
+            <li>
+              <div style="padding-top: 10px">
+                <span>Contact Center<br>Dialer Configuration Portal</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Center utility nav -->
+
+          <!-- Right utility nav -->
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="../profile/index.html" style="font-size: 1.2em;"><span class="fa fa-user"></span></a>
+            </li>
+            <li role="separator" class="divider hidden-mobile"></li>
+            <li>
+              <button type="button" class=" btn navbar-btn btn-primary" v-on:click="signout()" style="width: 8rem;">Sign
+                out</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="paddingpage">
+          <div class="Inpaddingpage">
+            <div class="paddingpagein">
+              <span class="fas fa-home"></span> HOME <span class="fas fa-chevron-right"></span> Profile
+            </div>
+          </div>
+
+        </div>
+        <div class="paddingpage">
+          <div class="paddingProfile">
+            <div class="profilefont">
+              <div class="profilePhoto">
+                <i class="fas fa-user-circle" style="font-size: 5em;"></i>
+              </div>
+              <div class="profiletext">Profile {{nav.displayName}}
+                <div class="role">Role</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="paddingpage">
+          <table v-if="user_role !== 'agent'" id="result-datatable" class="table-striped dataTable">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th v-if="user_role !== 'agent' && user_role !== 'supervisor'" class="endAl">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in results">
+                <td>{{row.email}}</td>
+                <td>{{row.role}}</td>
+
+                <td v-if="user_role !== 'agent' && user_role !== 'supervisor'" class="endAl1">
+                  <div class="texxx">
+
+                    <div class="tezs">
+
+                      <button type="button" class="actionprofilebutton1" data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                        <i class="fas fa-trash" style="font-size: 1em;"></i>
+                      </button>
+
+                    </div>
+                    <div class="tezs">
+
+                      <button type="button" class="actionprofilebutton1" data-toggle="modal" data-target="#formModal"
+                        v-bind:id='"btn-edit-"+ row.id' v-on:click="load_profile_detail(row)" data-whatever="@fat"
+                        title="Edit">
+                        <i class="fas fa-pencil-alt" style="font-size: 1em;"></i>
+                      </button>
+
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form @submit.prevent="remove_profile(row.id)">
+
+                              <label for="confirmation">To confirm deletion, type "permanently delete" in the text input
+                                field.</label>
+                              <input type="text" id="confirmation" name="confirmation" v-model="confirmation"
+                                class="form-control">
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                <button type="submit" class="btn btn-primary"
+                                  :disabled="confirmation !== 'permanently delete'">CONFIRM</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form id="editForm" autocomplete="off" @submit.prevent="formSubmit">
+                              <input type="" hidden id="id" v-model="row.id"></input>
+                              <div class="form-group row">
+                                <div class="col-md-12">
+                                  <label for="staticEmail">Email</label>
+                                  <input type="email" class="form-control" id="email" placeholder="Email"
+                                    v-model="row.email" disabled>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <div class="col-md-12">
+                                  <div class="form-group row">
+                                    <div class="col-md-12">
+                                      <label for="exampleFormControlSelect1">Role</label>
+                                      <select class="form-control" id="role" v-model="row.role">
+                                        <option value="uro001">Admin</option>
+                                        <option value="uro002">Supervisor</option>
+                                        <option value="uro003">Agent</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="centerBoxtext">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                    <button type="submit" class="btn btn-primary"
+                                      v-on:click="load_profile_detail()">CONFIRM</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="boxadd">
+            <button type="button" v-if="user_role !== 'agent' && user_role !== 'supervisor'" class="addbutton"
+              data-toggle="modal" data-target="#ModalCenter" v-on:click="add_profile()">
+              <i class="fas fa-plus-circle" style="font-size: 3em;"></i>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenter"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Create Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="profileForm" autocomplete="off" @submit.prevent="formSubmit">
+                  <div class="form-group row">
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <label for="addemail">Email</label>
+                      <input type="email" class="form-control" id="addemail" name="addemail" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <div class="col-md-12">
+                          <label for="addrole">Role</label>
+                          <select class="form-control" id="addrole" name="addrole">
+                            <option value="uro001">Admin</option>
+                            <option value="uro002">Supervisor</option>
+                            <option value="uro003">Agent</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="centerBoxtext">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                        <button type="submit" class="btn btn-primary" v-on:click="add_profile()">CONFIRM</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </main>
+
+    </div>
+  </div>
+  <script src="../script/common/jquery-3.3.1.min.js"></script>
+  <script src="../script/common/ntt.basecoat.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datatables.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datetime-picker.min.js"></script>
+  <script src="../script/common/jquery.dataTables.js"></script>
+  <script src="../script/common/fontawesome5.15.1.all.min.js"></script>
+  <script src="../script/common/vue-2.6.12.js"></script>
+  <script src="../script/common/vue.router-3.4.3.js"></script>
+  <script src="../script/common/axios-0.19.2.js"></script>
+  <script src="../script/common/moment-with-locales.js"></script>
+  <script src="../script/common/flatpickr.js"></script>
+
+  <!-- your own script here -->
+  <script src="./profile.js"></script>
+</body>
+
+</html>

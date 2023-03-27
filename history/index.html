@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="desktop-menu-open" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Contact Center Dialer Configuration Portal</title>
+  <!-- meta description -->
+  <link rel="stylesheet" href="../css/common/fonts_googleapi.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.app-dynamic.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datetime-picker.min.css">
+  <link rel="stylesheet" href="../css/common/ntt.basecoat.datatables.min.css">
+  <link rel="stylesheet" href="../css/common/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/common/flatpickr.min.css">
+  <link rel="stylesheet" href="../css/ntt-custom.css">
+
+  <!-- your own stylesheet here -->
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <div id="app">
+    <div class="desktop-menu-layout">
+      <div class="desktop-menu">
+        <div class="accordion-menu">
+          <nav class="scrollbars scrollbars-light">
+            <ul class="nav" data-accordion-group>
+              <li><a href="../search/index.html">Voice Recording</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../history/index.html">History</a></li>
+              <li v-if="user_role !== 'agent'"><a href="../View_role/index.html">User Role</a></li>
+              <li><a href="../profile/index.html">Profile</a></li>
+            </ul>
+
+          </nav>
+        </div>
+      </div>
+
+
+      <header class="site-header">
+        <nav class="navbar navbar-fixed-top">
+          <!-- IMPORTANT: add the class `navbar-fixed-top` to position it at the top of the window -->
+
+          <!-- Left utility nav -->
+          <ul class="nav navbar-nav navbar-left">
+            <!-- Desktop menu toggle -->
+            <li class="desktop-menu-toggle hidden-mobile">
+              <a href="#" data-toggle="desktop-menu" title="Desktop menu">
+                <div class="hidden-closed">Hide</div>
+                <div class="hidden-opened"></div>
+              </a>
+            </li>
+            <li>
+              <div style="padding-top: 10px">
+                <span>Contact Center<br>Dialer Configuration Portal</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Center utility nav -->
+
+          <!-- Right utility nav -->
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="../profile/index.html" style="font-size: 1.2em;"><span class="fa fa-user"></span>
+                {{nav.displayName}}</a>
+            </li>
+            <li role="separator" class="divider hidden-mobile"></li>
+            <li>
+              <button type="button" class=" btn navbar-btn btn-primary" v-on:click="signout()" style="width: 8rem;">Sign
+                out</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="paddingpage">
+          <div class="Inpaddingpage">
+            <div class="paddingpagein">
+              <span class="fas fa-home"></span> HOME <span class="fas fa-chevron-right"></span> History
+            </div>
+          </div>
+        </div>
+
+        <form id="campaignForm" autocomplete="off" @submit.prevent="formSubmit()">
+          <div class="row row_box">
+            <div class="row justify-content-start"
+              style=" width:-webkit-fill-available ; display: flex; flex-direction: row; align-items: flex-end;">
+
+              <div class='col-md-6'>
+                <div class="has-icon">
+                  <label class="control-label" for="datePicker-start"><strong>Start Date</strong></label>
+                  <input type="text" id="datePicker-start" class="form-control" placeholder="Please select start date"
+                    data-alt-format="j M Y" v-on:change=onStartDateChange() required>
+                  <span class="form-control-feedback fa-calendar"></span>
+                </div>
+              </div>
+
+              <div class='col-md-6'>
+                <div class="has-icon">
+                  <label class="control-label" for="datePicker-end"><strong>End Date</strong></label>
+                  <input type="text" id="datePicker-end" class="form-control" placeholder="Please select end date"
+                    data-alt-format="j M Y" v-on:change=onEndDateChange() required>
+                  <span class="form-control-feedback fa-calendar"></span>
+                </div>
+              </div>
+
+
+              <div class='col-md-2'>
+
+                <button type="submit" class="btn btn-primary"
+                  style="float: right; border-top: 1em; width:-webkit-fill-available; display:flex; justify-content:center;"
+                  id="btn-submit">
+                  <div class="pandingbuttonsearch"><span class="fas fa-search" style="font-size: 1em;"></span></div>
+                  Search
+                </button>
+
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+
+        <div class="paddingpage">
+          <table id="result-datatable" class="table-striped dataTable">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Action</th>
+                <th>Timestamp</th>
+                <th>Resource</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, index) in results">
+                <td>{{row.change_by}}</td>
+                <td>{{row.action}}</td>
+                <td>{{row.timestamp}}</td>
+                <td>{{row.resource_id}}</td>
+                <td><button onclick="goToSalesforce(row.resource_id)"><img src="../image/salesforce-logo.png" alt=""
+                      width="40rem" height="20rem" style="margin-bottom: 0px;"></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E"></script>
+  <script src="../script/common/jquery-3.3.1.min.js"></script>
+  <script src="../script/common/ntt.basecoat.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datatables.min.js"></script>
+  <script src="../script/common/ntt.basecoat.datetime-picker.min.js"></script>
+  <script src="../script/common/jquery.dataTables.js"></script>
+  <script src="../script/common/fontawesome5.15.1.all.min.js"></script>
+  <script src="../script/common/vue-2.6.12.js"></script>
+  <script src="../script/common/vue.router-3.4.3.js"></script>
+  <script src="../script/common/axios-0.19.2.js"></script>
+  <script src="../script/common/moment-with-locales.js"></script>
+  <script src="../script/common/flatpickr.js"></script>
+
+  <!-- your own script here -->
+  <script src="./history.js"></script>
+</body>
+
+</html>
